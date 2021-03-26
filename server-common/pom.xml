@@ -93,19 +93,6 @@
             <artifactId>pagehelper</artifactId>
             <version>${pageHelper.version}</version>
         </dependency>
-
-        <!-- swagger-mvc -->
-        <dependency>
-            <groupId>com.mangofactory</groupId>
-            <artifactId>swagger-springmvc</artifactId>
-            <version>1.0.2</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.6.6</version>
-        </dependency>
-        <!-- swagger-mvc -->
     </dependencies>
 
     <build>
@@ -119,4 +106,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
