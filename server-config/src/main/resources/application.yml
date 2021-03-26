@@ -22,6 +22,7 @@ eureka:
   instance:
     hostname: 127.0.0.1
     instance-id: ${eureka.instance.hostname}:${server.port}
+    status-page-url: http://${spring.cloud.client.ip-address}:${server.port}/swagger-ui.html
 
 management:
   endpoints:

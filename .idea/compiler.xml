@@ -7,9 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="server-user" />
         <module name="server" />
         <module name="server-test" />
         <module name="server-config" />
+        <module name="server-common" />
       </profile>
     </annotationProcessing>
   </component>
@@ -17,8 +19,10 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="backServer" options="-parameters" />
       <module name="server" options="-parameters" />
+      <module name="server-common" options="-parameters" />
       <module name="server-config" options="-parameters" />
       <module name="server-test" options="-parameters" />
+      <module name="server-user" options="-parameters" />
     </option>
   </component>
 </project>
