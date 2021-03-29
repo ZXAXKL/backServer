@@ -65,7 +65,7 @@ public class TokenUtils {
     }
 
     private String tokenKey(Integer personId){
-        return String.format("token_%s_%d", personId);
+        return String.format("token_%d", personId);
     }
 
     //把信息存入redis并附上token

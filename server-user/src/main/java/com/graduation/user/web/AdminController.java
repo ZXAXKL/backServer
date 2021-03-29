@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import com.graduation.common.result.ResponseDto;
 import com.graduation.user.logic.auth.staff.StaffLogic;
 import com.graduation.user.logic.admin.StaffAdminLogic;
-import com.graduation.user.logic.admin.UserAdminLogic;
 import com.graduation.user.logic.system.MobileMessageLogic;
 
 import java.io.UnsupportedEncodingException;
@@ -29,9 +28,6 @@ public class AdminController {
 
     @Autowired
     private StaffAdminLogic staffAdminLogic;
-
-    @Autowired
-    private UserAdminLogic userAdminLogic;
 
     @Autowired
     private MobileMessageLogic mobileMessageLogic;

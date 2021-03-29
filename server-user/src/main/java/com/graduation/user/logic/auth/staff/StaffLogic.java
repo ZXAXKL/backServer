@@ -21,7 +21,7 @@ import java.util.Map;
 
 @Slf4j
 @Component
-public abstract class StaffLogic {
+public class StaffLogic {
 
     @Autowired
     protected StaffService staffService;
@@ -31,10 +31,6 @@ public abstract class StaffLogic {
 
     @Autowired
     private TokenUtils tokenUtils;
-
-    protected abstract Byte roleType();
-
-    protected abstract String roleStr();
 
     //检查员工是否能登陆
     public ResponseDto check(String phone){
