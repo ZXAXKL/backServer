@@ -54,14 +54,14 @@ public class DeviceWarnLog {
     @Column(name = "info")
     private String info;
 
-    @Column(name = "create_time")
+    @Column(name = "create_date")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createDate;
 
     @Column(name = "confirm_id")
     private Integer confirmId;
 
-    @Column(name = "confirm_time")
+    @Column(name = "confirm_date")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date confirmDate;
 }

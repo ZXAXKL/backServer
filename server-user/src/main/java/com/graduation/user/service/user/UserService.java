@@ -123,5 +123,12 @@ public class UserService {
         }
         return room;
     }
+
+    //根据id返回机房名称
+    public String getName(Integer room_id){
+        Example example = new Example(Room.class);
+        example.createCriteria().andEqualTo("id", room_id);
+        return roomMapper.selectByPrimaryKey(example).getName();
+    }
 }
 

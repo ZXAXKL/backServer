@@ -6,7 +6,9 @@ import com.graduation.common.result.ResponseDto;
 import com.graduation.common.result.ResultUtils;
 import com.graduation.log.service.log.DeviceWarnLogService;
 import com.graduation.log.table.DeviceWarnLog;
+import com.graduation.log.table.WarnLogTransfer;
 import com.graduation.log.vo.DeviceWarnLogVoToUser;
+import com.graduation.log.vo.WarnLogVoToUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -25,12 +27,12 @@ public class DeviceWarnLogUserLogic {
     public ResponseDto view(Integer userId, Integer pageNum, Integer pageSize){
         //分页获取到用户所有的警告信息（除数据部分）的列表
         PageHelper.startPage(pageNum, pageSize);
-        List<DeviceWarnLog> logs = deviceWarnLogService.view(userId);
-        PageInfo<DeviceWarnLog> pageInfo = new PageInfo<>(logs);
-        List<DeviceWarnLogVoToUser> result = new ArrayList<>();
+        List<WarnLogTransfer> logs = deviceWarnLogService.view(userId);
+        PageInfo<WarnLogTransfer> pageInfo = new PageInfo<>(logs);
+        List<WarnLogVoToUser> result = new ArrayList<>();
         //把列表里的类型转传输类型
-        for(DeviceWarnLog log : pageInfo.getList()){
-            result.add(new DeviceWarnLogVoToUser(log));
+        for(WarnLogTransfer log : pageInfo.getList()){
+            result.add(new WarnLogVoToUser(log));
         }
         //包装结果
         Map<String, Object> map = new HashMap<>();

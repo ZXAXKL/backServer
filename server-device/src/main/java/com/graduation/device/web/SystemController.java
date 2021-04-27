@@ -1,7 +1,6 @@
-package com.graduation.user.web;
+package com.graduation.device.web;
 
-import com.graduation.user.service.user.UserService;
-import com.graduation.user.table.Room;
+import com.graduation.device.service.device.DeviceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,18 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-//提供其他服务的接口
 @Slf4j
 @RestController
 @RequestMapping("/system")
 public class SystemController {
 
     @Autowired
-    UserService userService;
+    DeviceService deviceService;
 
-    @PostMapping("/room/get")
-    public List<Room> getRoom(@RequestParam Integer userId){ return userService.view(userId); }
-
-    @PostMapping("/room/getName")
-    public String getRoomName(@RequestParam Integer roomId){ return userService.getName(roomId); }
+    @PostMapping("/device/getName")
+    public String getDeviceName(@RequestParam String sn){ return deviceService.getName(sn);}
 }

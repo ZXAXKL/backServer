@@ -14,4 +14,7 @@ public interface RoomService {
 
     @PostMapping("/room/get")
     public List<Room> getRoom(@RequestParam Integer userId);
+
+    @PostMapping("/room/getName")
+    public String getRoomName(@RequestParam Integer roomId);
 }

@@ -54,4 +54,11 @@ public class DeviceService extends ConditionsConstructor {
         return deviceMapper.selectByExample(example);
     }
 
+    //获取设备名称
+    public String getName(String sn){
+        Example example = new Example(Device.class);
+        example.createCriteria().andEqualTo("sn", sn);
+        return  deviceMapper.selectOneByExample(example).getName();
+    }
+
 }
