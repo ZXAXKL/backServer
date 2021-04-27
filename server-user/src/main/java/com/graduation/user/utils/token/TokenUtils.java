@@ -72,7 +72,7 @@ public class TokenUtils {
     public String putInRedis(Map<String, Object> info, Integer personId){
         //生成token
         String token = genShortToken();
-        log.info(String.format("%s%d登陆生成Token:%s", personId, token));
+        log.info(String.format("%s登陆生成Token:%s", personId, token));
         //存入信息中
         info.put("token", token);
         //存redis

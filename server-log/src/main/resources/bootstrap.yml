@@ -1,0 +1,42 @@
+spring:
+  cloud:
+    config:
+      name: log-service
+      label: master
+      discovery:
+        enabled: true
+        service-id: log-server
+      profile: test
+  redis:
+    port: 6379
+    password:
+    host: 127.0.0.1
+  datasource:
+    name: test
+    url: jdbc:mysql://127.0.0.1:3306/springcloud
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+  # mqtt服务器配置
+  mqtt:
+    client-id: d94c66e5-e185-495a-96a5-4d065a7c6816
+    username: zzy
+    password: 123456
+  # rabbitmq服务器配置
+  rabbitmq:
+    host: 127.0.0.1
+    username: ZZY
+    password: 123456
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+
+wechat:
+  mini-program:
+    app-id: 111111
+    app-secret: 000000

@@ -44,7 +44,6 @@ public class WeChatLogin extends AuthLogic {
         JSONObject SessionKeyOpenId = wxUtils.getSessionKeyAndOpenId(code);
         String openid = SessionKeyOpenId.getString("openid");
         String sessionKey = SessionKeyOpenId.getString("session_key");
-
         //生成一个签名
         String signature2 = DigestUtils.sha1Hex(rawDataStr + sessionKey);
         //检查小程序的签名和生成的签名是否吻合,不吻合说明不是本平台的小程序

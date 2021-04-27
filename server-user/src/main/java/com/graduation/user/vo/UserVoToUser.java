@@ -8,7 +8,6 @@ import com.graduation.user.table.UserNotify;
 import java.util.List;
 
 @Data
-
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserVoToUser {
 

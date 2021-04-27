@@ -53,9 +53,7 @@ public class JwtUtils {
     public static boolean verify(String token){
         try {
             Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY); //算法
-            JWTVerifier verifier = JWT.require(algorithm)
-
-                    .build();
+            JWTVerifier verifier = JWT.require(algorithm).build();
             verifier.verify(token);
             return true;
         } catch (Exception ex){

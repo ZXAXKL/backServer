@@ -19,9 +19,6 @@ public class UserAdminLogic {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private TokenUtils tokenUtils;
-
     //分页查看用户信息列表
     public ResponseDto view(Integer pageNum, Integer pageSize, Map<String, Object> conditions){
         PageHelper.startPage(pageNum,pageSize);

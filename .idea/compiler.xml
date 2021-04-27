@@ -7,13 +7,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="server-common" />
         <module name="server-user" />
-        <module name="server" />
+        <module name="server-log" />
         <module name="server-test" />
         <module name="server-config" />
-        <module name="server-common" />
+        <module name="server" />
+        <module name="server-device" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="server-gateway" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -21,6 +26,9 @@
       <module name="server" options="-parameters" />
       <module name="server-common" options="-parameters" />
       <module name="server-config" options="-parameters" />
+      <module name="server-device" options="-parameters" />
+      <module name="server-gateway" options="-parameters" />
+      <module name="server-log" options="-parameters" />
       <module name="server-test" options="-parameters" />
       <module name="server-user" options="-parameters" />
     </option>

@@ -1,6 +1,7 @@
 package com.graduation.user.web;
 
 import com.alibaba.fastjson.JSONObject;
+import com.graduation.user.logic.user.UserRoomLogic;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -35,6 +36,9 @@ public class UserController {
 
     @Autowired
     private OperateUserLogic operateUserLogic;
+
+    @Autowired
+    private UserRoomLogic userRoomLogic;
 
     //微信小程序登陆 or 注册
     @ApiOperation(value = "用户登录微信小程序或注册")
@@ -78,10 +82,10 @@ public class UserController {
     @ApiOperation(value = "用户修改昵称")
     @PostMapping("/rename")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "personId", value = "用户ID", dataType = "string", paramType = "header", required = true, defaultValue = ""),
+            @ApiImplicitParam(name = "personId", value = "用户ID", dataType = "string", paramType = "query", required = true, defaultValue = ""),
             @ApiImplicitParam(name = "nickname", value = "用户昵称", dataType = "string", paramType = "query", required = true, defaultValue = "")
     })
-    public ResponseDto rename(@RequestHeader Integer personId, @RequestParam String nickname){
+    public ResponseDto rename(@RequestParam Integer personId, @RequestParam String nickname){
         return operateUserLogic.rename(personId, nickname);
     }
 
@@ -89,10 +93,10 @@ public class UserController {
     @ApiOperation(value = "用户设置通知方式")
     @PostMapping("/notify/set")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "personId", value = "用户ID", dataType = "string", paramType = "header", required = true, defaultValue = ""),
+            @ApiImplicitParam(name = "personId", value = "用户ID", dataType = "string", paramType = "query", required = true, defaultValue = ""),
             @ApiImplicitParam(name = "notifyId", value = "通知方式", dataType = "string", paramType = "query", required = true, defaultValue = "")
     })
-    public ResponseDto setNotify(@RequestHeader Integer personId, @RequestParam Integer notifyId){
+    public ResponseDto setNotify(@RequestParam Integer personId, @RequestParam Integer notifyId){
         return notifyUserLogic.set(personId, notifyId);
     }
 
@@ -100,12 +104,12 @@ public class UserController {
     @ApiOperation(value = "用户添加短信通知方式")
     @PostMapping("/notify/msg/add")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "personId", value = "用户ID", dataType = "string", paramType = "header", required = true, defaultValue = ""),
+            @ApiImplicitParam(name = "personId", value = "用户ID", dataType = "string", paramType = "query", required = true, defaultValue = ""),
             @ApiImplicitParam(name = "phone", value = "用户手机号", dataType = "string", paramType = "query", required = true, defaultValue = ""),
             @ApiImplicitParam(name = "code", value = "验证码", dataType = "string", paramType = "query", required = true, defaultValue = "")
     })
     public ResponseDto addMobileMessageCodeNotification(
-            @RequestHeader Integer personId,
+            @RequestParam Integer personId,
             @RequestParam String phone,
             @RequestParam String code
     ){
@@ -122,10 +126,10 @@ public class UserController {
     @ApiOperation(value = "用户删除通知方式")
     @PostMapping("/notify/remove")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "personId", value = "用户ID", dataType = "string", paramType = "header", required = true, defaultValue = ""),
+            @ApiImplicitParam(name = "personId", value = "用户ID", dataType = "string", paramType = "query", required = true, defaultValue = ""),
             @ApiImplicitParam(name = "notifyId", value = "通知方式", dataType = "string", paramType = "query", required = true, defaultValue = "")
     })
-    public ResponseDto removeNotification(@RequestHeader Integer personId, @RequestParam Integer notifyId){
+    public ResponseDto removeNotification(@RequestParam Integer personId, @RequestParam Integer notifyId){
         return notifyUserLogic.remove(personId, notifyId);
     }
 
@@ -133,10 +137,17 @@ public class UserController {
     @ApiOperation(value = "用户获取通知方式")
     @PostMapping("/notify/get")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "personId", value = "用户ID", dataType = "string", paramType = "header", required = true, defaultValue = "")
+            @ApiImplicitParam(name = "personId", value = "用户ID", dataType = "string", paramType = "query", required = true, defaultValue = "")
     })
-    public ResponseDto getNotification(@RequestHeader Integer personId){
+    public ResponseDto getNotification(@RequestParam Integer personId){
         return notifyUserLogic.get(personId);
     }
 
+    //获取机房
+    @ApiOperation(value="用户获取管理机房")
+    @PostMapping("/room/get")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "personId", value = "用户ID", dataType = "string", paramType = "query", required = true, defaultValue = "")
+    })
+    public ResponseDto getRoom(@RequestParam Integer personId){ return userRoomLogic.GetRoom(personId); }
 }

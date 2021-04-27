@@ -1,6 +1,10 @@
 package com.graduation.user.service.user;
 
+import com.graduation.user.mapper.ControlMapper;
+import com.graduation.user.mapper.RoomMapper;
 import com.graduation.user.mapper.UserMapper;
+import com.graduation.user.table.Control;
+import com.graduation.user.table.Room;
 import com.graduation.user.table.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +17,12 @@ public class UserService {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private RoomMapper roomMapper;
+
+    @Autowired
+    private ControlMapper controlMapper;
 
     //检查用户是否存在 - 用户ID
     public User exist(Integer userId, String... properties){
@@ -101,5 +111,17 @@ public class UserService {
         return userMapper.selectByExample(example);
     }
 
+    //根据id返回用户管理的机房
+    public List<Room> view(Integer user_id){
+        List<Control> tempControl;
+        Example example = new Example(Control.class);
+        example.createCriteria().andEqualTo("user_id", user_id);
+        tempControl = controlMapper.selectByExample(example);
+        List<Room> room = new ArrayList<Room>();
+        for(Control control: tempControl){
+            room.add(roomMapper.selectByPrimaryKey(control.getRoom_id()));
+        }
+        return room;
+    }
 }
 

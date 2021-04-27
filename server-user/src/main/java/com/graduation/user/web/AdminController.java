@@ -79,11 +79,11 @@ public class AdminController {
     //改密码
     @ApiOperation(value = "管理员修改密码")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "personId", value = "管理员ID", dataType = "string", paramType = "header", required = true, defaultValue = ""),
+            @ApiImplicitParam(name = "personId", value = "管理员ID", dataType = "string", paramType = "query", required = true, defaultValue = ""),
             @ApiImplicitParam(name = "password", value = "管理员密码", dataType = "string", paramType = "query", required = true, defaultValue = "")
     })
     @PostMapping("/rekey")
-    public ResponseDto rekey(@RequestHeader Integer personId, @RequestParam String password) throws Exception {
+    public ResponseDto rekey(@RequestParam Integer personId, @RequestParam String password) throws Exception {
         return adminLogic.rekey(personId, password);
     }
 
