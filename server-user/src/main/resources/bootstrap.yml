@@ -17,6 +17,11 @@ spring:
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
+  # rabbitmq服务器配置
+  rabbitmq:
+    host: 127.0.0.1
+    username: ZZY
+    password: 123456
 
 eureka:
   client:
